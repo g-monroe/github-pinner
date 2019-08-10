@@ -75,6 +75,9 @@
   }
 
   function getRepo(obj) {
+    if (obj.description === null){
+      obj.description = "No description found.";
+    }
     var temp = "<div id=\"gp-container-repo\"><a class=\"gp-title\" href=\"" + obj.html_url + "\">" + obj.name + "</a><p class=\"gp-desc\">" + obj.description + "</p><div id=\"gp-stats\">"
     if (obj.language != "" && lang_colors[obj.language] != null) temp += "<p class=\"gp-stat\"><span class=\"gp-lang\" style=\"background-color: " + lang_colors[obj.language]["color"] + ";\"></span>" + obj.language + "</p>"
     if (obj.stargazers_count != 0) temp += "<a class=\"gp-stat gp-link\" href=\"" + obj.html_url + "/stargazers" + "\"><svg class=\"gp-octicon\" height=\"16\" role=\"img\" version=\"1.1\" viewBox=\"0 0 14 16\" width=\"14\"><path fill-rule=\"evenodd\" d=\"M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74z\"></path></svg>" + obj.stargazers_count + "</a>"
