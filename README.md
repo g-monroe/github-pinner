@@ -1,5 +1,7 @@
-<p align="center"><img src="https://d29mk5socxaj4o.cloudfront.net/header.svg">
-  <br><br>
+
+<h1>Github Pinner</h1>
+<h3>Originally by Mackenzie Boudreau</h3>
+<h3>Modified/Fixed by Gavin Monroe</h3>
 <a href="https://www.gnu.org/licenses/gpl-3.0">
   <img src="https://img.shields.io/badge/License-GPL%20v3-blue.svg">
 </a>
@@ -7,6 +9,11 @@
   <img src="https://img.shields.io/github/issues/mackboudreau/GitHubPinner.svg">
 </p>
 
+# Fixed Issues - Gavin Monroe
+- Regex Issues with url grabbing/parsing
+- 404 Urls for random resources
+- Some clean up of code for JS
+- 'Type' mapping for parseURL
 
 # Overview 
 Do you want to showcase a github repository or profile on your website? Instead of leaving a simple link, use this tool to create embedded HTML github tiles. It uses GitHub's API to grab the information, so no need to worry about updating html. You can pin profiles, single repositories, or even all repositories linked to an individual profile!
