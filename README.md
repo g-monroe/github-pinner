@@ -31,9 +31,4 @@ Simply set the html **data** field with a GitHub profile, repository, or reposit
 <p align="left"><img src="https://i.imgur.com/iC56hgU.png" width="550px"><br>
 <img src="https://i.imgur.com/8O9L4sf.png" width="1000px"></p>
 
-## TODO
-* Implement functionality for a "All Repos" element
-* ~~Use AWS Cloudfront to serve files to reduce latency on sites~~
-* Add additional option styles for tiles
-* Expanding width "All-repo" section
-* Hover-able icon with GitHub Profile popup
+
