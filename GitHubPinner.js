@@ -18,53 +18,54 @@
 
   function loadElements(parent, filter = "") {
     var values = parseUrl(parent.getAttribute("data"))
+    console.log(values);
     getDataForUrl(values["URL"], values["TYPE"], parent, function(obj, type, element) {
       // set up DOM elements
       if (type == types["PROFILE"]) {
-          var temp = "<div id=\"gp-container-profile\"><a href=\"" + obj.html_url + "\">"
-          if (obj.bio.length < 45) temp += "<img id='gp-avatar' style=\"width: 60px;\" src=\"" + obj.avatar_url + "\"></a><div id='gp-information'><a class='gp-link' href=\"" + obj.html_url + "\"><span class=\"gp-element gp-name\">" + obj.name + "</span><span class=\"gp-element gp-user\">" + obj.login + "</span></a><span class=\"gp-element gp-bio\">" + obj.bio + "</span></div><div class='gp-stats'><a class=\"gp-stat\" href=\"" + obj.html_url + "?tab=repositories" + "\"><b class=\"gp-stat-val\">" + obj.public_repos + "</b><span class=\"gp-stat-desc\">Repos</span></a><a class=\"gp-stat\" href=\"" + obj.html_url + "?tab=followers" + "\"><b class=\"gp-stat-val\">" + obj.followers + "</b><span class=\"gp-stat-desc\">Followers</span></a><a class=\"gp-stat\" href=\"" + obj.html_url + "?tab=following" + "\"><b class=\"gp-stat-val\">" + obj.following + "</b><span class=\"gp-stat-desc\">Following</span></a><a href=\"" + obj.html_url + "\" class=\"gp-btn gp-follow\">Follow</a></div></div>"
-          else temp += "<img id='gp-avatar' style=\"width: 80px;\" src=\"" + obj.avatar_url + "\"></a><div id='gp-information'><a class='gp-link' href=\"" + obj.html_url + "\"><span class=\"gp-element gp-name\">" + obj.name + "</span><span class=\"gp-element gp-user\">" + obj.login + "</span></a><span class=\"gp-element gp-bio\">" + obj.bio + "</span></div><div class='gp-stats'><a class=\"gp-stat\" href=\"" + obj.html_url + "?tab=repositories" + "\"><b class=\"gp-stat-val\">" + obj.public_repos + "</b><span class=\"gp-stat-desc\">Repos</span></a><a class=\"gp-stat\" href=\"" + obj.html_url + "?tab=followers" + "\"><b class=\"gp-stat-val\">" + obj.followers + "</b><span class=\"gp-stat-desc\">Followers</span></a><a class=\"gp-stat\" href=\"" + obj.html_url + "?tab=following" + "\"><b class=\"gp-stat-val\">" + obj.following + "</b><span class=\"gp-stat-desc\">Following</span></a><a href=\"" + obj.html_url + "\" class=\"gp-btn gp-follow\">Follow</a></div></div>"
-          if (element.classList.contains("flat")) {
-            element.className = "github-pinner flat gp-profile"
-          } else {
-            element.className = "github-pinner gp-profile"
-          }
-          element.innerHTML = temp
+        var temp = "<div id=\"gp-container-profile\"><a href=\"" + obj.html_url + "\">"
+        if (obj.bio.length < 45) temp += "<img id='gp-avatar' style=\"width: 60px;\" src=\"" + obj.avatar_url + "\"></a><div id='gp-information'><a class='gp-link' href=\"" + obj.html_url + "\"><span class=\"gp-element gp-name\">" + obj.name + "</span><span class=\"gp-element gp-user\">" + obj.login + "</span></a><span class=\"gp-element gp-bio\">" + obj.bio + "</span></div><div class='gp-stats'><a class=\"gp-stat\" href=\"" + obj.html_url + "?tab=repositories" + "\"><b class=\"gp-stat-val\">" + obj.public_repos + "</b><span class=\"gp-stat-desc\">Repos</span></a><a class=\"gp-stat\" href=\"" + obj.html_url + "?tab=followers" + "\"><b class=\"gp-stat-val\">" + obj.followers + "</b><span class=\"gp-stat-desc\">Followers</span></a><a class=\"gp-stat\" href=\"" + obj.html_url + "?tab=following" + "\"><b class=\"gp-stat-val\">" + obj.following + "</b><span class=\"gp-stat-desc\">Following</span></a><a href=\"" + obj.html_url + "\" class=\"gp-btn gp-follow\">Follow</a></div></div>"
+        else temp += "<img id='gp-avatar' style=\"width: 80px;\" src=\"" + obj.avatar_url + "\"></a><div id='gp-information'><a class='gp-link' href=\"" + obj.html_url + "\"><span class=\"gp-element gp-name\">" + obj.name + "</span><span class=\"gp-element gp-user\">" + obj.login + "</span></a><span class=\"gp-element gp-bio\">" + obj.bio + "</span></div><div class='gp-stats'><a class=\"gp-stat\" href=\"" + obj.html_url + "?tab=repositories" + "\"><b class=\"gp-stat-val\">" + obj.public_repos + "</b><span class=\"gp-stat-desc\">Repos</span></a><a class=\"gp-stat\" href=\"" + obj.html_url + "?tab=followers" + "\"><b class=\"gp-stat-val\">" + obj.followers + "</b><span class=\"gp-stat-desc\">Followers</span></a><a class=\"gp-stat\" href=\"" + obj.html_url + "?tab=following" + "\"><b class=\"gp-stat-val\">" + obj.following + "</b><span class=\"gp-stat-desc\">Following</span></a><a href=\"" + obj.html_url + "\" class=\"gp-btn gp-follow\">Follow</a></div></div>"
+        if (element.classList.contains("flat")) {
+          element.className = "github-pinner flat gp-profile"
+        } else {
+          element.className = "github-pinner gp-profile"
+        }
+        element.innerHTML = temp
       } else if (type == types["REPO"]) {
-          var temp = getRepo(obj)
-          if (element.classList.contains("flat")) {
-            element.className = "github-pinner flat gp-repo"
-          } else {
-            element.className = "github-pinner gp-repo"
-          }
-          element.innerHTML = temp
+        var temp = getRepo(obj)
+        if (element.classList.contains("flat")) {
+          element.className = "github-pinner flat gp-repo"
+        } else {
+          element.className = "github-pinner gp-repo"
+        }
+        element.innerHTML = temp
       } else if (type == types["ALL"]) {
-          if (element.classList.contains("flat")) {
-            element.className = "github-pinner flat gp-all"
-          } else {
-            element.className = "github-pinner gp-all"
-          }
-          if (filter != "") {
-            var child = element.querySelector("#gp-container-all-repos")
-            var temp = ""
-            for (j = 0; j < obj.length; j++) {
-              if (filter == "" || obj[j].name.toLowerCase().indexOf(filter.toLowerCase()) != -1) {
-                temp += getRepo(obj[j])
-              }
-            }
-            child.innerHTML = temp
-          } else {
-            var temp = "<input type=\"text\" placeholder=\"Search for project...\" value=\"" + filter + "\" class=\"gp-search\"></input><div id=\"gp-container-all-repos\">"
-            for (j = 0; j < obj.length; j++) {
-                temp += getRepo(obj[j])
-            }
-            temp += "</div>"
-            element.innerHTML = temp
-            var searchs = document.getElementsByClassName("gp-search")
-            for (j = 0; j < searchs.length; j++) {
-              searchs[j].addEventListener("keyup", search);
+        if (element.classList.contains("flat")) {
+          element.className = "github-pinner flat gp-all"
+        } else {
+          element.className = "github-pinner gp-all"
+        }
+        if (filter != "") {
+          var child = element.querySelector("#gp-container-all-repos")
+          var temp = ""
+          for (j = 0; j < obj.length; j++) {
+            if (filter == "" || obj[j].name.toLowerCase().indexOf(filter.toLowerCase()) != -1) {
+              temp += getRepo(obj[j])
             }
           }
+          child.innerHTML = temp
+        } else {
+          var temp = "<input type=\"text\" placeholder=\"Search for project...\" value=\"" + filter + "\" class=\"gp-search\"></input><div id=\"gp-container-all-repos\">"
+          for (j = 0; j < obj.length; j++) {
+            temp += getRepo(obj[j])
+          }
+          temp += "</div>"
+          element.innerHTML = temp
+          var searchs = document.getElementsByClassName("gp-search")
+          for (j = 0; j < searchs.length; j++) {
+            searchs[j].addEventListener("keyup", search);
+          }
+        }
       }
       element.style.visibility = "visible"
     })
@@ -87,7 +88,7 @@
     var styleref = document.createElement("link")
     styleref.rel = "stylesheet"
     styleref.type = "text/css"
-    styleref.href = "css/style.css"//"https://d29mk5socxaj4o.cloudfront.net/css/style.css"
+    styleref.href = "assets/vendor/githubPinner/css/style.css"
     document.getElementsByTagName("head")[0].prepend(styleref)
   }
 
@@ -109,8 +110,8 @@
   APIHandler.prototype.load = function(callback) {
     var request = new XMLHttpRequest();
     request.onreadystatechange = function() {
-        if (request.readyState == 4 && request.status == 200)
-            callback(request.responseText)
+      if (request.readyState == 4 && request.status == 200)
+        callback(request.responseText)
     }
     request.open("GET", self.url, true );
     request.send( null );
@@ -118,21 +119,18 @@
 
   // MARK: - Helper Functions
   function parseUrl(url) {
-    profile = /^(http|https):\/\/(www.)?github.com(\/)?\/[A-Za-z\d]{1,39}(\/)?$/;
-    repository = /^(http|https):\/\/(www.)?github.com\/[A-Za-z\d]{1,39}\/[A-Za-z\d-]{1,100}(\/)?$/;
-    repositories = /^(http|https):\/\/(www.)?github.com\/[A-Za-z\d]{1,39}\?tab=repositories(\/)?$/;
-    if (profile.test(url)) {
+    var dataUrl = url.split(' ')[0];
+    var type  = url.split(' ')[1];
+    var profileName = dataUrl.replace(/^(http|https):\/\/(www.)?github.com(\/)?/g, "").replace(/\/.*(\/)?$/, "");
+    if (type === "profile") {
       // profile
-      var profileName = url.replace(/^(http|https):\/\/(www.)?github.com(\/)?/g, "").replace(/\/$/, "")
       return {"URL": "https://api.github.com/users/" + profileName, "TYPE" : types["PROFILE"] }
-    } else if (repository.test(url)) {
+    } else if (type === "repo") {
       // repository
-      var profileName = url.replace(/^(http|https):\/\/(www.)?github.com(\/)?/g, "").replace(/\/.*(\/)?$/, "")
-      var repositoryName = url.replace(/^(http|https):\/\/(www.)?github.com\/[A-Za-z\d]{1,39}\//g, "").replace(/\/$/, "")
+      var repositoryName = dataUrl.replace(/^(http|https):\/\/(www.)?github.com(\/)?/g, "").replace(profileName + "/", "");
       return {"URL" : "https://api.github.com/repos/" + profileName + "/" + repositoryName, "TYPE": types["REPO"] }
-    } else if (repositories.test(url)) {
+    } else if (type === "repos") {
       // repositories
-      var profileName = url.replace(/^(http|https):\/\/(www.)?github.com\//, "").replace(/\?tab=repositories(\/)?$/, "")
       return {"URL" : "https://api.github.com/users/" + profileName + "/repos", "TYPE" : types["ALL"] }
     } else {
       throw new Error('GitHub Planner: Invalid data parameter! Unrecognized GitHub URl: ' + url)
