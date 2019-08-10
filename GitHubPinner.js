@@ -17,8 +17,7 @@
   }
 
   function loadElements(parent, filter = "") {
-    var values = parseUrl(parent.getAttribute("data"))
-    console.log(values);
+    var values = parseUrl(parent.getAttribute("data"));
     getDataForUrl(values["URL"], values["TYPE"], parent, function(obj, type, element) {
       // set up DOM elements
       if (type == types["PROFILE"]) {
